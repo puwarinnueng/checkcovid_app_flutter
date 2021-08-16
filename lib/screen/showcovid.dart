@@ -9,13 +9,12 @@ class MyApp1 extends StatelessWidget {
     return MaterialApp(
       title: 'Nueng App',
       home: MyHomePage(),
-      theme: ThemeData(primarySwatch: Colors.deepOrange),
+      theme: ThemeData(primarySwatch: Colors.lightBlue),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -51,30 +50,37 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Covid("วันที่", result.updateDate, Colors.blue, 70),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Covid("ข้อมูล ณ. วันที่", result.updateDate,
+                      Colors.blue.shade800, 150),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Covid(
+                      "ติดเชื้อวันนี้", result.todayCases, Colors.orange, 100),
                   SizedBox(
                     height: 10,
                   ),
-                  Covid("ติดเชื้อวันนี้", result.todayCases, Colors.orange, 70),
+                  Covid("เสียชีวิตวันนี้", result.todayDeaths,
+                      Colors.red.shade400, 100),
                   SizedBox(
                     height: 10,
                   ),
-                  Covid("เสียชีวิตวันนี้", result.todayDeaths, Colors.red, 70),
+                  Covid("รักษาหายวันนี้", result.todayRecovered,
+                      Colors.green.shade600, 100),
                   SizedBox(
                     height: 10,
                   ),
-                  Covid("รักษาหายวันนี้", result.todayRecovered, Colors.green, 70),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Covid("ติดเชื้อทั้งหมด", result.cases, Colors.pink, 70),
-                  SizedBox(
-                    height: 10,
-                  ),
-                   Covid("เสียชีวิตทั้งหมด", result.cases , Colors.red, 70),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  Covid("เสียชีวิตทั้งหมด", result.deaths, Colors.pink, 70),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  //  Covid("รักษาหายทั้งหมด", result.recovered , Colors.green.shade600, 70),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
                 ],
               ),
             );
@@ -82,8 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
           return LinearProgressIndicator();
         },
       ),
-      
     );
-   
   }
 }
